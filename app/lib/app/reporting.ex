@@ -28,5 +28,6 @@ defmodule App.Reporting do
     defp parse_float(string) do
         string
         |> String.to_float
+        |> abs # absolute value convenience method
     end
 end
