@@ -1,4 +1,5 @@
 defmodule App.Reporting do
+    alias NimbleCSV.RFC4180, as: Nimble
     def list_transactions do
         IO.puts "Listing tx's..."
         # File.read("lib/transactions-jan.csv") # returns full tuple
@@ -7,6 +8,6 @@ defmodule App.Reporting do
         File.read!("lib/transactions-jan.csv") |> parse
     end
     defp parse(string) do
-        NimbleCSV.RFC4180.parse_string(string)
+        Nimble.parse_string(string)
     end
 end
