@@ -8,9 +8,12 @@ defmodule App.Reporting do
         File.read!("lib/transactions-jan.csv")
             |> parse
             |> filter # account is always the same... drop
+            |> normalize
     end
     defp parse(string) do
-        Nimble.parse_string(string)
+        string
+        |> String.replace("\r", "")
+        |> Nimble.parse_string
     end
     defp filter(rows) do
         # Enum.map(rows, fn(row) -> Enum.drop(row, 1) end) # Enum, standard lib
@@ -23,6 +26,7 @@ defmodule App.Reporting do
         [date, descrip, parse_float(amount)]
     end
     defp parse_float(string) do
-        String.to_float(string) # initially fails... can't parse '\r'
+        string
+        |> String.to_float
     end
 end
