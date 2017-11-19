@@ -10,6 +10,7 @@ defmodule App.Reporting do
             |> filter # account is always the same... drop
             |> normalize
             |> sort
+            |> print
     end
     defp parse(string) do
         string
@@ -37,5 +38,12 @@ defmodule App.Reporting do
     # defp customsort(row1, row2) do # could do this way, and parse columns from there... or pattern matching:
     defp customsort([_, _, prev], [_, _, next]) do
         prev < next # N.B. this is from specs for Enum.sort which is looking for a boolean true/false... so this will feed it what it wants.
+    end
+    defp print(rows) do
+        IO.puts "\nTransactions:"
+        Enum.each(rows, &print_console(&1))
+    end
+    defp print_console([date, descrip, amount]) do
+        IO.puts "#{date} #{descrip} \t$#{:erlang.float_to_binary(amount, decimals: 2)}"
     end
 end
