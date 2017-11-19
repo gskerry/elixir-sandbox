@@ -28,15 +28,17 @@ defmodule Budget.Conversion do
 end
 
 
-# FYI, internals on parsing
-# Returned JSON from conversion API
-# [
-#     { "currency": "euro", "rate": 0.94 },
-#     { "currency": "pound", "rate": 0.79 }
-# ]
-# Conversion...
-# Elixir tuple
-# {:ok, [ # list of maps...
-#     %{"currency" => "euro", "rate" => 0.94},
-#     %{"currency" => "pound", "rate" => 0.79}
-# ]}
+@doc """
+FYI, internals on parsing
+Returned JSON from conversion API...
+[
+    { "currency": "euro", "rate": 0.94 },
+    { "currency": "pound", "rate": 0.79 }
+]
+Conversion...
+Elixir tuple
+{:ok, [ # list of maps...
+    %{"currency" => "euro", "rate" => 0.94},
+    %{"currency" => "pound", "rate" => 0.79}
+]}
+"""
