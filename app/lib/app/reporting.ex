@@ -9,6 +9,7 @@ defmodule App.Reporting do
             |> parse
             |> filter # account is always the same... drop
             |> normalize
+            |> sort
     end
     defp parse(string) do
         string
@@ -29,5 +30,12 @@ defmodule App.Reporting do
         string
         |> String.to_float
         |> abs # absolute value convenience method
+    end
+    defp sort(rows) do
+        Enum.sort(rows, &customsort(&1, &2))
+    end
+    # defp customsort(row1, row2) do # could do this way, and parse columns from there... or pattern matching:
+    defp customsort([_, _, prev], [_, _, next]) do
+        prev < next # N.B. this is from specs for Enum.sort which is looking for a boolean true/false... so this will feed it what it wants.
     end
 end
