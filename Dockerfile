@@ -1,6 +1,9 @@
 FROM elixir
 
-WORKDIR /home/apps
+WORKDIR /home/myapp
+
+RUN mix local.hex --force
+RUN mix local.rebar --force
 
 EXPOSE 4000
 
