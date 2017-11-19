@@ -1,7 +1,7 @@
 defmodule Mix.Tasks.ListTransactions do
-    use Mix.Tasks # core module
+    use Mix.Task # core module
 
     def run(_) do # argument underscore... avoid compiler warnings
-        Budget.Reporting.list_transactions |> IO.inspect
+        App.Reporting.list_transactions |> IO.inspect
     end
 end
