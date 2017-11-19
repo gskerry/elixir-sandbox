@@ -1,16 +1,16 @@
 
 _bin
 
-/_build/ # The directory Mix will write compiled artifacts to.
+app/_build/ # The directory Mix will write compiled artifacts to.
 
-/cover/ # If you run "mix test --cover", coverage assets end up here.
+app/cover/ # If you run "mix test --cover", coverage assets end up here.
 
-/deps/ # The directory Mix downloads your dependencies sources to.
+app/deps/ # The directory Mix downloads your dependencies sources to.
 
-/doc/ # Where 3rd-party dependencies like ExDoc output generated docs.
+app/doc/ # Where 3rd-party dependencies like ExDoc output generated docs.
 
-/.fetch # Ignore .fetch files in case you like to edit your project deps locally.
+app/.fetch # Ignore .fetch files in case you like to edit your project deps locally.
 
-erl_crash.dump # If the VM crashes, it generates a dump, let's ignore it too.
+app/erl_crash.dump # If the VM crashes, it generates a dump, let's ignore it too.
 
-*.ez # Also ignore archive artifacts (built via "mix archive.build").
+app/*.ez # Also ignore archive artifacts (built via "mix archive.build").
