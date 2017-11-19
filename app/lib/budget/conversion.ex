@@ -10,6 +10,10 @@ defmodule Budget.Conversion do
     defp parse(%{status_code: 200, body: json_response}) do
         Poison.Parser.parse(json_response) # returns a tuple
     end
+    defp convert({:ok, rates}, amount) do
+        rate = find_euro(rates)
+        amount / rate
+    end
 end
 
 
