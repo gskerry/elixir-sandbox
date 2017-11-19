@@ -16,4 +16,13 @@ defmodule App.Reporting do
         # Enum.map(rows, fn(row) -> Enum.drop(row, 1) end) # Enum, standard lib
         Enum.map(rows, &Enum.drop(&1, 1))
     end
+    defp normalize(rows) do
+        Enum.map(rows, &parse_amount(&1))
+    end
+    defp parse_amount([date, descrip, amount]) do # can pass data structure in via arguments... very cool
+        [date, descrip, parse_float(amount)]
+    end
+    defp parse_float(string) do
+        String.to_float(string) # initially fails... can't parse '\r'
+    end
 end
