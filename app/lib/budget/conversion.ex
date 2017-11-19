@@ -6,4 +6,8 @@ defmodule Budget.Conversion do
             {:error, _} -> "Error fetching rates"
         end
     end
+    # intro "private" functions
+    defp parse(%{status_code: 200, body: json_response}) do
+        Poison.Parser.parse(json_response) # returns a tuple
+    end
 end
