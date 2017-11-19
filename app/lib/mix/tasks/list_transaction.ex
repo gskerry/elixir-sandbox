@@ -3,6 +3,6 @@ defmodule Mix.Tasks.ListTransactions do
 
     @shortdoc "list transactions from CSV file."
     def run(_) do # argument underscore... avoid compiler warnings
-        App.Reporting.list_transactions |> IO.inspect
+        App.Reporting.list_transactions
     end
 end
