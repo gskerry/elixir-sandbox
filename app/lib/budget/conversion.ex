@@ -11,21 +11,32 @@ defmodule Budget.Conversion do
         Poison.Parser.parse(json_response) # returns a tuple
     end
     defp convert({:ok, rates}, amount) do
-        rate = find_euro(rates)
+        rate = find_euro(rates) # new function being called* To be defined.
         amount / rate
+    end
+    # recall, no if statements
+    defp find_euro([%{"currency" => "euro", "rate" => rate} | _]) do
+        rate
+        # more than a little odd that pattern matching and variable setting are ocurring in the 'arguments' to the function...
+    end
+    defp find_euro([_ | tail]) do # defining a separate function?... with the same name?!?
+        find_euro(tail)
+    end
+    defp find_euro([]) do
+        raise "no rate found for Euro" # analog to 'throw'
     end
 end
 
 
 # FYI, internals on parsing
 # Returned JSON from conversion API
-[
-    { "currency": "euro", "rate": 0.94 },
-    { "currency": "pound", "rate": 0.79 }
-]
+# [
+#     { "currency": "euro", "rate": 0.94 },
+#     { "currency": "pound", "rate": 0.79 }
+# ]
 # Conversion...
 # Elixir tuple
-{:ok, [
-    %{"currency" => "euro", "rate" => 0.94},
-    %{"currency" => "pound", "rate" => 0.79}
-]}
+# {:ok, [ # list of maps...
+#     %{"currency" => "euro", "rate" => 0.94},
+#     %{"currency" => "pound", "rate" => 0.79}
+# ]}
