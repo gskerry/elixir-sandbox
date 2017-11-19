@@ -1,4 +1,4 @@
-defmodule Budget do
+defmodule App do
     @moduledoc """
     """
     @doc """
