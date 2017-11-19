@@ -1,6 +1,6 @@
-## Mixing it up with Elixir
+## Learning Elixir
 
-Tutorial courtesy of [Code School](http://campus.codeschool.com/courses/mixing-it-up-with-elixir)
+Tutorials courtesy of [Code School](http://campus.codeschool.com/courses/mixing-it-up-with-elixir)
 
 ---
 
