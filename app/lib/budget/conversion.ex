@@ -11,3 +11,17 @@ defmodule Budget.Conversion do
         Poison.Parser.parse(json_response) # returns a tuple
     end
 end
+
+
+# FYI, internals on parsing
+# Returned JSON from conversion API
+[
+    { "currency": "euro", "rate": 0.94 },
+    { "currency": "pound", "rate": 0.79 }
+]
+# Conversion...
+# Elixir tuple
+{:ok, [
+    %{"currency" => "euro", "rate" => 0.94},
+    %{"currency" => "pound", "rate" => 0.79}
+]}
